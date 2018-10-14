@@ -11,6 +11,12 @@ def index(request):
         'post_list':post_list
     })
 
+def potofilo(request):
+    potofilo_items = Portofilo.objects.all()
+    return render(request,'blog/potofilo.html',context={
+        'potofilo_items':potofilo_items
+    })
+
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.body = markdown.markdown(post.body,
